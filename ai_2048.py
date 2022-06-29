@@ -226,6 +226,11 @@ def timeTest():
     print(NextMove(grid, random.randint(0,20)))
   print("RUNTIME: ", time.time()-start)
 
+def printGrid(grid):
+  for row in grid:
+    print(row)
+  print("============================")
+
 def playGame():
   grid = [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
   spawn = [2,2,2,2,2,2,2,2,2,4]
@@ -241,7 +246,7 @@ def playGame():
     direction = NextMove(grid, 0)
     if direction == 4:
       print("GAME OVER")
-      print(grid)
+      printGrid(grid)
     grid = simulateMove(grid, direction)
     zeros = []
     for i in range(len(grid)):
@@ -252,6 +257,6 @@ def playGame():
     insertAt = zeros[random.randint(0,len(zeros)-1)]
     insert = spawn[random.randint(0,9)]
     grid[insertAt[0]][insertAt[1]] = insert
-    print(grid)
+    printGrid(grid)
 
 playGame()
